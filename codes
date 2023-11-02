@@ -1483,3 +1483,263 @@ int main()
     }
     return 0;
 }
+
+
+//PROLOG
+female(parvati).
+female(ashoksundari).
+female(riddhi).
+male(mahesh).
+male(kartikey).
+male(gajanan).
+male(shubh).
+male(labh).
+
+parentof(shubh,ridhhi).
+parentof(shubh,gajanan).
+parentof(labh,riddhi).
+parentof(labh,gajanan).
+parentof(gajanan,parvati).
+parentof(gajanan,mahesh).
+parentof(ashoksundari,mahesh).
+parentof(ashoksundari,parvati).
+parentof(kartikey,mahesh).
+parentof(kartikey,parvati).
+
+couple(gajanan,riddhi).
+couple(mahesh,parvati).
+
+wifeof(X,Y):-female(Y),couple(X,Y).
+
+brotherof(X,Y):-male(Y), parentof(X,Z), parentof(Y,Z).
+
+sisterof(X,Y):-female(Y), parentof(X,Z), parentof(Y,Z).
+
+fatherof(X,Y):-male(Y),parentof(X,Y).
+
+motherof(X,Y):-female(Y),parentof(X,Y).
+
+grandfatherof(X,Z):-male(Y),parentof(X,Y),parentof(Y,Z).
+
+grandmotherof(X,Z):-female(Z),parentof(X,Y),parentof(Y,Z).
+
+sisterinlawof(X,A):-female(A),brotherof(X,Y),wifeof(Y,A).
+
+brotherinlawof(X,Y):-male(Y),brotherof(G,Y),wifeof(G,X).
+
+nephewof(X,Y):-male(Y),fatherof(Y,Z),brotherof(Z,X).
+
+
+
+
+
+
+
+
+
+
+
+
+//PLANT KINGDOM
+plant(rose, flowering).
+plant(pine, coniferous).
+plant(fern, non_flowering).
+plant(cactus, succulent).
+plant(oak, deciduous).
+plant(neem, evergreen).
+plant(banyan, fig).
+
+
+use(rose, ornamental).
+use(pine, timber).
+use(fern, landscaping).
+use(cactus, water_storage).
+use(oak, furniture).
+use(neem, medicinal).
+use(banyan, shade_provision).
+
+
+habitat(rose, garden).
+habitat(pine, forest).
+habitat(fern, damp_areas).
+habitat(cactus, desert).
+habitat(oak, woodland).
+habitat(neem, urban).
+habitat(banyan, urban).
+
+
+used_for(Plant, Purpose) :- use(Plant, Purpose).
+
+growsin(Plant, Environment) :- habitat(Plant, Environment).
+
+hashabitat(Plant, Environment) :- habitat(Plant, Environment).
+
+characteristic(Plant, Type) :- plant(Plant, Type).
+
+isfeasible(X):-habitat(X,forest),use(X,timber).
+
+medicinalvalue(X):-use(X,medicinal).
+
+decorative(X):-plant(X,flowering),use(X,ornamental).
+
+
+
+//JOB SUGGESTION
+
+job(programmer).
+job(teacher).
+job(doctor).
+job(artist).
+job(manager).
+job(lawyer).
+job(chef).
+
+
+degreeof(programmer,btech_in_cs).
+degreeof(programmer,bca).
+degreeof(teacher,education).
+degreeof(doctor,mbbs).
+degreeof(doctor,ms).
+degreeof(doctor,md_cardiology).
+degreeof(doctor,md_neurology).
+degreeof(doctor,md_ophthalmology).
+degreeof(artist,bva).
+degreeof(manager,bba).
+degreeof(manager,bcom).
+degreeof(lawyer,llb).
+degreeof(chef,culinary_arts).
+
+
+/*minimum suggested experience*/
+suggested_minexpof(programmer,2).
+suggested_minexpof(teacher,1).
+suggested_minexpof(doctor,3).
+suggested_minexpof(artist,0.5).
+suggested_minexpof(manager,1).
+suggested_minexpof(lawyer,2).
+suggested_minexpof(chef,1.5).
+
+
+symptom(fever, flu).
+symptom(cough, flu).
+symptom(sore_throat, flu).
+symptom(runny_nose, cold).
+symptom(congestion, cold).
+symptom(sneezing, cold).
+symptom(rash, allergies).
+symptom(itchy_eyes, allergies).
+symptom(yellowness,jaundice).
+symptom(platelet_drop,dengue).
+symptom(scales,ringworm).
+symptom(boils,chicken_pox).
+symptom(loose_motion,dysentery).
+
+
+diagnose_illness(Patient, Illness) :-symptom(Symptom, Illness),has_symptom(Patient, Symptom).
+med(Disease,Treatment):-treatment(Disease,Treatment).
+treat(Patient,Treatment):-symptom(Symptom,Illness),has_symptom(Patient,Symptom),treatment(Illness,Treatment).
+
+
+
+treatment(flu, antibiotics).
+treatment(allergies, anti_allergy).
+treatment(dengue,fluid_treatment).
+treatment(chicken_pox, antivirals).
+treatment(dysentery,metronidazole).
+treatment(ringworm, anti_fungal_cream).
+
+has_symptom(rhea, fever).
+has_symptom(rhea, cough).
+has_symptom(rhea, sore_throat).
+
+has_symptom(jay, cough).
+has_symptom(jay, runny_nose).
+has_symptom(jay, sneezing).
+
+has_symptom(arya, rash).
+has_symptom(arya, itchy_eyes).
+
+has_symptom(gauri,yellowness).
+
+has_symptom(vaanar,chicken_pox).
+
+
+Program Code:
+(i) Animal Kingdom
+mammal(dog).
+mammal(cat).
+mammal(human).
+mammal(elephant).
+
+bird(eagle).
+bird(sparrow).
+bird(penguin).
+
+fish(goldfish).
+fish(shark).
+fish(trout).
+
+reptile(snake).
+reptile(crocodile).
+reptile(lizard).
+
+amphibian(frog).
+amphibian(salamander).
+
+land_animal(X):-mammal(X); bird(X).
+
+water_animal(X):-fish(X).
+
+land_and_water(X):-amphibian(X).
+
+has_skin(dog, fur).
+has_skin(cat, fur).
+has_skin(human, skin).
+has_skin(elephant, skin).
+has_skin(eagle, feathers).
+has_skin(sparrow, feathers).
+has_skin(penguin, feathers).
+has_skin(goldfish, scales).
+has_skin(shark, scales).
+has_skin(trout, scales).
+has_skin(snake, scales).
+has_skin(crocodile, scales).
+has_skin(lizard, scales).
+has_skin(frog, moist_skin).
+has_skin(salamander, moist_skin).
+
+is_mammal(X) :- mammal(X).
+is_bird(X) :- bird(X).
+is_fish(X) :- fish(X).
+is_reptile(X) :- reptile(X).
+is_amphibian(X) :- amphibian(X).
+
+is_animal(X) :- is_mammal(X).
+is_animal(X) :- is_bird(X).
+is_animal(X) :- is_fish(X).
+is_animal(X) :- is_reptile(X).
+is_animal(X) :- is_amphibian(X).
+
+
+
+(ii) Branch
+subject(computer_science, programming).
+subject(computer_science, algorithms).
+subject(computer_science, databases).
+subject(mechanical_engineering, mechanics).
+subject(mechanical_engineering, thermodynamics).
+subject(mechanical_engineering, materials).
+subject(electrical_engineering, electronics).
+subject(electrical_engineering, power_systems).
+subject(electrical_engineering, control_systems).
+
+interest(programming, computer_science).
+interest(algorithms, computer_science).
+interest(mechanics, mechanical_engineering).
+interest(thermodynamics, mechanical_engineering).
+interest(electronics, electrical_engineering).
+interest(power_systems, electrical_engineering).
+
+suggest_branch(StudentInterest, Subject, SuggestedBranch) :-
+    interest(StudentInterest, SuggestedBranch),
+    subject(SuggestedBranch, Subject).
