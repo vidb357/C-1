@@ -1,0 +1,1485 @@
+//complex
+// Online C compiler to run C program online
+#include <stdio.h>
+
+void main() {
+    int r1, r2, i1, i2 , flag =0, choice, r, i;
+    double x, y;
+    
+    while(flag==0){
+        
+        printf("Enter choice\n1.add\n2.subtract\n3.multiply\n4.divide\n5.exit\n");
+        scanf("%d", &choice);
+        
+        if(choice==5){
+            break;
+        }
+        
+        printf("Enter real and imaginary parts of first number: \n");
+        scanf("%d%d",&r1, &i1);
+        printf("%d + %d i", r1,i1);
+        
+        printf("Enter real and imaginary parts of second number: \n");
+        scanf("%d%d",&r2, &i2);
+        printf("%d + %d i", r2,i2);
+        
+        switch(choice){
+            case 1:
+            printf("%d + %d i", r1+r2, i1+i2);
+            break;
+            
+        case 2:
+               r = r1-r2;
+               i = i1-i2;
+            printf("Subtraction of the 2 numbers = %d + %d i\n\n", r, i);
+            break;
+case 3:
+r = (r1*r2)- (i1*i2);
+i = (r1*i2) + (i1*r2);
+printf("Multiplication of the 2 numbers = %d + %d i\n\n", r, i);
+break;
+case 4:
+x = ((double)(((r1*r2) + (i1*i2)) ) ) / ( (double)( ((r2*r2) +
+
+(i2*i2)) ) );
+
+y = ( (double) ( ((r2*i1) - (r1*i2)) ) ) / ( (double) (
+
+((r2*r2) + (i2*i2)) ) );
+
+printf("Division of the 2 numbers = %.2lf + %.2lf i\n\n", x, y);
+break;
+
+
+    default:
+    printf("invalid choice");
+            
+        }
+        
+        
+    }
+}
+
+//STRUCT IN C
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+
+struct cart{
+   string pname;
+   int number;
+   double price;
+};
+
+double amount(const cart& product, int qty){
+    return product.price * qty;
+}
+int main() {
+    
+    cart p1;
+    p1.pname = "aloo";
+    p1.number = 12;
+    p1.price = 30;
+    
+    double amt = amount(p1,  3);
+    cout<<amt<<endl;
+  
+
+    return 0;
+}
+
+//CLASS MARKS
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student{
+    private:
+    string name;
+    double marks[3];
+    double percentage;
+    double total;
+    char grade;
+    
+    public :
+    
+    void input(){
+        cout<<"name"<<endl;
+        cin>>name;
+        
+        cout<<"marks in 3 subjects: \n"<<endl;
+        for(int i=0; i<3; i++){
+            cout<<"subject "<<i+1<<endl;
+            cin>>marks[i];
+            
+        }
+        
+        
+        
+    }
+    
+    void calculate(){
+        
+        total = marks[0] + marks[1] + marks[2];
+        
+        percentage = (total / 300)*100;
+        
+        if(percentage>=90){
+            grade='A';
+        }
+        else if(percentage>=80){
+            grade='B';
+        }
+        
+        else{
+            grade='C';
+        }
+        
+    }
+    
+    void display(){
+        
+        cout<<"Total is "<<total<<endl;
+        cout<<"Percentage is "<<percentage<<"%"<<endl;
+        cout<<"Grade is "<<grade;
+    }
+    
+    
+    
+};
+
+
+
+int main(){
+    Student st1;
+    st1.input();
+    st1.calculate();
+    st1.display();
+    return 0;
+}
+
+//CLASS RECTANGLE
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Rectangle{
+    
+    private:
+    double length;
+    double width;
+    
+    public:
+    void setdim(double l, double w){
+        length = l;
+        width = w;
+        
+    }
+    
+    double getarea(){
+        return length*width;
+    }
+    
+};
+
+int main(){
+    
+    Rectangle r1;
+    double a,b;
+    cin>>a>>b;
+    r1.setdim(a,b);
+    double area = r1.getarea();
+    cout<<area<<" unit sq"<<endl;
+    return 0;
+}
+
+// CONSTRUCTOR
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class complex{
+    private:
+    int real;
+    int imag;
+    
+    public:
+    complex(){
+        cout<<"enter real and imaginary part: \n"<<endl;
+        cin>>real>>imag;
+    }
+    
+    complex(int x){
+        real=imag=x;
+    }
+    
+    complex(int r, int i){
+        real =r;
+        imag = i;
+    }
+    
+    friend void sum(complex x, complex y);
+};
+
+
+
+void sum(complex x, complex y){
+    int rsum, isum;
+    rsum = x.real +y.real;
+    isum = x.imag + y.imag;
+    cout<<"sum is "<<rsum<<" + "<<isum<<"i"<<endl;
+}
+
+
+
+int main(){
+    int a,b,c,d;
+    cout<<"Real and imag parts of no.1 : "<<endl;
+    
+    cin>>a>>b;
+    
+    cout<<"Real and imag parts of no.2 : "<<endl;
+    
+    cin>>c>>d;
+    
+    complex c1(a,b);
+    complex c2(c,d);
+    
+    sum(c1,c2);
+    
+    
+    
+}
+
+//SERIES
+#include &lt;iostream&gt;
+using namespace std;
+class Series {
+private:
+int n;
+long long sum;
+public:
+// Default constructor
+Series() {
+n = 0;
+sum = 0;
+}
+// Constructor for numbr of terms
+Series(int numTerms) {
+n = numTerms;
+sum = 0;
+}
+// Function to calculate the sum of the series
+void calculateSum() {
+long long term = 9;
+long long m = 1;
+for (int i = 1; i &lt;= n; i++) {
+sum += term;
+m *= 10;
+term += 9 * m;
+}
+}
+// Display the sum
+void displaySum() {
+cout &lt;&lt; &quot;Sum of the series: &quot; &lt;&lt; sum &lt;&lt; endl;
+}
+};
+int main() {
+int n;
+cout <<”Enter the number of terms in the series:” ;
+cin>>n;
+Series s(n); // Create an object of Series class with numTerms
+s.calculateSum(); // Calculate the sum of the series
+s.displaySum(); // Display the result
+return 0;
+}
+
+//VIRTUAL FUNCTION
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class polygon{
+    
+    protected:
+    int width, height;
+    
+    public:
+    void set_values(int w, int h){
+        width = w;
+        height = h;
+    }
+    
+    virtual int area()=0;
+    
+    
+    
+};
+
+class rectangle : public polygon{
+    
+    public:
+    int area() override{
+        return width*height;
+    }
+    
+};
+
+class triangle : public polygon{
+    
+    public:
+    int area() override{
+        return 0.5*width*height;
+    }
+    
+};
+
+
+int main(){
+    
+    polygon *shape;
+    rectangle r;
+    triangle t;
+    
+    shape = &r;
+    
+    int a,b,c,d;
+    cin>>a>>b;
+    shape->set_values(a,b);
+    cout<<shape->area()<<endl;
+    
+    shape=&t;
+    
+    cin>>c>>d;
+    
+    shape->set_values(c,d);
+    cout<<shape->area()<<endl;
+    
+    return 0;
+    
+    
+    
+}
+
+//BOOK
+#include <iostream>
+#include <string>
+using namespace std;
+class Media {
+protected:
+string title;
+double price;
+public:
+Media(const string& t, double p) : title(t), price(p) {}
+virtual void displayInfo() {
+cout << "Title: " << title << "\nPrice: Rs " << price << endl;
+}
+};
+class Book : public Media {
+private:
+int numPages;
+public:
+Book(const string& t, double p, int pages) : Media(t, p), numPages(pages) {}
+void displayInfo() override {
+Media::displayInfo();
+cout << "Number of Pages: " << numPages << " pages" << endl;
+}
+};
+class VideoTape : public Media {
+private:
+int playingTime;
+public:
+VideoTape(const string& t, double p, int time) : Media(t, p), playingTime(time) {}
+void displayInfo() override {
+Media::displayInfo();
+cout << "Playing Time: " << playingTime << " minutes" << endl;
+}
+};
+int main() {
+Media* items[3];
+items[0] = new Book("Ramayan", 2000, 1700);
+items[1] = new VideoTape("Harry Potter and the Deathly Hallows", 599, 125);
+items[2] = new Book("To Kill a Mockingbird", 299, 281);
+for (int i = 0; i < 3; i++) {
+items[i]->displayInfo();
+cout << endl;
+}
+// Free the allocated memory
+for (int i = 0; i < 3; i++) {
+delete items[i];
+}
+return 0;
+}
+
+//PYTHON
+phonebook = {}
+n = int(input("Enter the number of entries: "))
+for i in range(n):
+    name = input("Enter a name: ")
+
+    while(True):
+        phonenumber = int(input("Enter a phone number: ") )
+        if(len(str(phonenumber))==10):
+            phonebook[name]=phonenumber
+            break
+        else:
+            print("Invalid")
+
+snumber = int(input("Enter a number to search: "))
+
+
+for i,j in phonebook.items():
+    if(j==snumber):
+        print("The name is", i)
+        break
+    else:
+        print("Not found in phonebook")
+        break
+#reverse
+
+def reverse(num):
+    reversed_num = 0
+    while num != 0:
+        digit = num % 10
+        reversed_num = reversed_num * 10 + digit
+        num //= 10
+
+    print("The reversed number is : ",reversed_num)
+
+
+num=int(input("Enter a number: "))
+reverse(num)
+#prime
+def is_prime(num):
+    if num <= 1:
+        return 0
+
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return 0
+
+    return 1
+
+num_to_check = int(input("Enter a number to check if it is prime: "))
+result = is_prime(num_to_check)
+
+if result == 1:
+    print("Prime number")
+else:
+    print("Not a prime number")
+#month
+
+def get_month_name(month_number):
+    months = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December",
+    }
+
+    if month_number in months:
+        return months[month_number]
+    else:
+        return "Invalid month number. Please enter a number between 1 and 12."
+
+user_input = int(input("Enter a month number (1 to 12): "))
+
+if 1 <= user_input <= 12:
+    month_name = get_month_name(user_input)
+    print(f"The corresponding month is: {month_name}")
+else:
+    print("Invalid input. Please enter a number between 1 and 12.")
+
+class NumberProcessor:
+    def __init__(self):
+        self.numbers = []
+
+    def read_data(self, n):
+        print(f"Enter {n} numbers:")
+        for _ in range(n):
+            num = float(input())
+            self.numbers.append(num)
+
+    def sort_data_ascending(self):
+        self.numbers.sort()
+
+    def bubbleSort(array):
+
+        for i in range(len(array)):
+
+            for j in range(0, len(array) - i - 1):
+
+                if array[j] > array[j + 1]:
+
+                temp = array[j]
+                array[j] = array[j+1]
+                array[j+1] = temp
+
+    def sort_data_descending(self):
+        self.numbers.sort(reverse=True)
+
+    def display_data(self):
+        print("Sorted numbers:")
+        for num in self.numbers:
+            print(num)
+
+def main():
+    num_processor = NumberProcessor()
+    n = int(input("Enter the number of elements to process: "))
+    num_processor.read_data(n)
+
+    print("1. Sort in ascending order")
+    print("2. Sort in descending order")
+    choice = int(input("Enter your choice (1 or 2): "))
+
+    if choice == 1:
+       # num_processor.sort_data_ascending()
+       bubbleSort(self.numbers)
+    elif choice == 2:
+        num_processor.sort_data_descending()
+    else:
+        print("Invalid choice. Sorting in ascending order by default.")
+        num_processor.sort_data_ascending()
+
+    num_processor.display_data()
+
+if __name__ == "__main__":
+    main()
+
+array=[5,6,7,3,2]
+
+def bubbleSort(array):
+
+  for i in range(len(array)):
+
+    for j in range(0, len(array) - i - 1):
+
+      if array[j] > array[j + 1]:
+
+        temp = array[j]
+        array[j] = array[j+1]
+        array[j+1] = temp
+
+print
+
+
+
+
+
+
+l = []
+n  = int(input("Enter number of elements : "))
+print("Enter the eLements: ")
+def fact(x):
+     if x==1 or x==0:
+         return 1
+     else:
+         return (x*fact(x-1))
+for i in range (0, n):
+    ele = int(input())
+    l.append(ele)
+    max=0
+    for i in range (len(l)):
+        if(l[i]>max):
+             max=l[i]
+print("The maximum element is ",max, "and it's factorial is ", fact(max))
+def lcm(x, y):
+    if x > y:
+       greater = x
+    else:
+       greater = y
+    while(True):
+        if((greater % x == 0) and (greater % y == 0)):
+            l = greater
+            break
+        greater += 1
+    return l
+x=int(input("Enter number 1: "))
+y=int(input( "Enter number 2: "))
+print("The L.C.M. is", lcm(x,y))
+def gcd(x,y):
+    if x>y:
+        g=x
+    else:
+        g=y
+    while(True):
+        if ((x%g==0) and (y%g==0)):
+            break
+        else:
+            g = g - 1
+    return g
+x=int(input( "Enter number 1: "))
+y=int(input("Enter number 2: "))
+print("The G.C.D. is", gcd(x,y))
+def factorial(x):
+    if x==1 or x==0:
+        return 1
+    else:
+        return (x*factorial(x-1))
+n=int(input("Enter number of rows: "))
+'''for i in range(n):
+    for j in range(n-i+1):
+        print(end=" ")
+    for j in range(i+1):
+        print(fact(i)//(fact(j)*fact(i-j)), end=" ")
+    print(" ")
+    '''
+
+for i in range(n):
+    for j in range(n-i+1):
+
+        print(end=" ")
+
+    for j in range(i+1):
+
+        print(factorial(i)//(factorial(j)*factorial(i-j)), end=" ")
+
+    print()
+def fib(x):
+    a=0
+    b=1
+    print(a)
+    print(b)
+    for i in range(1,x-1):
+        c=a+b
+        print(c)
+        a=b
+        b=c
+n=int(input("Enter number of terms: "))
+print("The fibonacci series is :")
+fib(n)
+def add(num1, num2):
+    return num1 + num2
+def subtract(num1, num2):
+    return num1 - num2
+def multiply(num1, num2):
+    return num1*num2
+def divide(num1, num2):
+    return num1 / num2
+print("Choices:-\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n")
+choice = int(input("Enter choice number :"))
+number_1=int(input("Enter first number:"))
+number_2=int(input("Enter second number:"))
+
+if choice ==1:
+    print(number_1, "+", number_2, "=",
+                    add(number_1, number_2))
+elif choice == 2:
+    print(number_1, "-", number_2, "=",
+                    subtract(number_1, number_2))
+elif choice == 3:
+    print(number_1, "*", number_2, "=",
+                    multiply(number_1, number_2))
+elif choice ==4:
+    print(number_1, "/", number_2, "=",
+                    divide(number_1, number_2))
+else:
+    print("Invalid choice")
+
+#sabb
+def add(num1, num2):
+    return num1 + num2
+def subtract(num1, num2):
+    return num1 - num2
+def multiply(num1, num2):
+    return num1*num2
+def divide(num1, num2):
+    return num1 / num2
+print("Choices:-\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n")
+choice = int(input("Enter choice number :"))
+number_1=int(input("Enter first number:"))
+number_2=int(input("Enter second number:"))
+
+if choice ==1:
+    print(number_1, "+", number_2, "=",
+                    add(number_1, number_2))
+elif choice == 2:
+    print(number_1, "-", number_2, "=",
+                    subtract(number_1, number_2))
+elif choice == 3:
+    print(number_1, "*", number_2, "=",
+                    multiply(number_1, number_2))
+elif choice ==4:
+    print(number_1, "/", number_2, "=",
+                    divide(number_1, number_2))
+else:
+    print("Invalid choice")
+
+class task:
+    list1 =[ 9, 3, 6, 1, 0, 5]
+    def bubble_sort(list1):
+
+        for i in range(0,len(list1)-1):
+            for j in range(len(list1)-1):
+                if(list1[j]>list1[j+1]):
+
+                    list1[j],list1[j+1] = list1[j+1], list1[j]
+        return list1
+
+    print("The unsorted list is: ", list1)
+
+    print("The sorted list in ascending order is: ", bubble_sort(list1))
+
+def bubble_Sortdesc(array):
+    for i in range(len(array)):
+        for j in range(0, len(array) - i - 1):
+# To sort in ascending order, change < to > in this line.
+            if array[j] < array[j + 1]:
+                (array[j], array[j + 1]) = (array[j + 1], array[j])
+number = [ 6, 7, 2, 1, 4 ]
+bubble_Sortdesc(number)
+print('Sorted Array in descending order is  : ')
+print(number)
+
+//SHOPPING CART
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+class cart {
+    static const int max = 100;  // Use a constant variable
+    int itemcode[max];
+    string itemname[max];
+    int qty[max];
+    int price[max];
+    int itemCount;  // Track the current number of items
+
+public:
+    cart() : itemCount(0) {}  // Constructor to initialize itemCount
+
+    void shop() {
+        cout<<"-------------------SHOP AVAILABLE---------------------------"<<endl;
+        cout<<"| Item code"<<setw(11)<<"| Item name"<<setw(12)<<"| Price"<<setw(20)<<"| Quantity available|"<<endl;
+        cout<<"12"<<setw(16)<<"| shirt"<<setw(14)<<"20"<<setw(12)<<"25"<<endl;
+        cout<<"71"<<setw(15)<<"| pant"<<setw(15)<<"30"<<setw(12)<<"20"<<endl;
+        cout<<"926"<<setw(15)<<"| shoes"<<setw(15)<<"299"<<setw(12)<<"125"<<endl;
+        cout<<"83"<<setw(15)<<"| cups"<<setw(15)<<"75"<<setw(12)<<"100"<<endl;
+        cout<<"------------------------------------------------------------"<<endl;
+    }
+
+    void additem() {
+        if (itemCount >= max) {
+            cout << "Cart is full. Cannot add more items." << endl;
+            return;
+        }
+
+        cout << "Enter Item code, Item name, Price, and Quantity: " << endl;
+        cin >> itemcode[itemCount] >> itemname[itemCount] >> price[itemCount] >> qty[itemCount];
+        itemCount++;
+        cout << "Item added successfully." << endl;
+        cout << '\n';
+    }
+
+    void deleteitem() {
+        int codeToDelete;
+        cout << "Enter item code for the item you wish to delete: " << endl;
+        cin >> codeToDelete;
+        for (int i = 0; i < itemCount; i++) {
+            if (itemcode[i] == codeToDelete) {
+                price[i] = 0;
+                cout << "Item deleted successfully." << endl;
+                return; // Exit the loop once the item is found and deleted
+            }
+        }
+        cout << "Item not found." << endl;
+        cout << '\n';
+    }
+
+    void display() {
+        int amt = 0,sum=0;
+        cout << "------------------------------BILL----------------------------" << endl;
+        cout << "|Item code"<<setw(12)<<"Item name"<<setw(12)<<"Price"<<setw(12)<<"Quantity"<<setw(12)<<"Amount|" << endl;
+        for (int i = 0; i < itemCount; i++) {
+            if (price[i] != 0) { // Check if the item is not deleted
+                amt += price[i] * qty[i];
+                sum+=price[i];
+                cout<<itemcode[i]<<setw(15)<<itemname[i]<<setw(14)<<price[i]<<setw(10)<<qty[i]<<setw(13)<<(price[i]*qty[i]);
+                cout << endl;
+            }
+        }
+        cout << "\nTotal amount to be paid= " << amt;
+        cout<<"\nTotal value of inventory= "<<sum;
+        cout << '\n';
+    }
+};
+
+int main() {
+    cart c;
+    c.shop();
+    int choice;
+    while (choice != 5)
+    {
+        cout << "\n1. Add to cart\n2. Delete from cart\n3. Place order\n4. Delete cart\n5. Exit" << endl;
+        cout << "\nPlease choose an option: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            c.additem();
+            break;
+        case 2:
+            c.deleteitem();
+            break;
+        case 3:
+            c.display();
+            break;
+        case 4:
+            cout << "Cart deleted." << endl;
+            break;
+        case 5:
+            cout<<"Thank you."<<endl;
+            break;
+        default:
+            cout << "Invalid choice. Please choose a valid option." << endl;
+            break;
+        }
+    }
+
+    return 0;
+}
+
+//Inheritance
+1.
+#include <iostream>
+#include <string>
+using namespace std;
+// Base class to store item title and price
+class Item {
+protected:
+string title;
+double price;
+public:
+Item() : title(""), price(0.0) {}
+// Function to input data for an item
+void getData() {
+cout << "Enter the title: ";
+cin >> title;
+cout << "Enter the price: Rs ";
+cin >> price;
+}
+// Function to display data for an item
+void displayData() {
+cout << "Title: " << title << endl;
+cout << "Price: Rs " << price << endl;
+}
+};
+// Base class to store sales figures for three months
+class Sale {
+protected:
+double salesFigures[3];
+public:
+Sale() {
+for (int i = 0; i < 3; i++) {
+salesFigures[i] = 0.0;
+}
+}
+// Function to input sales figures for three months
+void getData() {
+cout << "Enter sales figures for three months:" << endl;
+for (int i = 0; i < 3; i++) {
+cout << "Month " << i + 1 << ": Rs ";
+cin >> salesFigures[i];
+}
+}
+// Function to display sales figures for three months
+void displayData() {
+cout << "Sales Figures for Three Months:" << endl;
+for (int i = 0; i < 3; i++) {
+cout << "Month " << i + 1 << ": Rs " << salesFigures[i] << endl;
+}
+}
+};
+// Derived class for hardware items, inheriting from both Item and Sale
+class HWItem : public Item, public Sale {
+public:
+// Function to input data for a hardware item
+void getData() {
+Item::getData(); // Input item data
+Sale::getData(); // Input sales data
+}
+// Function to display data for a hardware item
+void displayData() {
+Item::displayData(); // Display item data
+Sale::displayData(); // Display sales data
+}
+};
+// Derived class for software items, inheriting from both Item and Sale
+class SWItem : public Item, public Sale {
+public:
+// Function to input data for a software item
+void getData() {
+Item::getData(); // Input item data
+Sale::getData(); // Input sales data
+}
+// Function to display data for a software item
+void displayData() {
+Item::displayData(); // Display item data
+Sale::displayData(); // Display sales data
+}
+};
+int main() {
+char choice;
+do {
+HWItem hardwareItem;
+SWItem softwareItem;
+cout << "Enter Hardware Item Details:" << endl;
+hardwareItem.getData(); // Input data for a hardware item
+cout << "Enter Software Item Details:" << endl;
+softwareItem.getData(); // Input data for a software item
+cout << "Hardware Item Details:" << endl;
+hardwareItem.displayData(); // Display data for a hardware item
+cout << "Software Item Details:" << endl;
+softwareItem.displayData(); // Display data for a software item
+cout << "Do you want to enter another item? (y/n): ";
+cin >> choice;
+} while (choice == 'y' || choice == 'Y');
+return 0;
+}
+
+2.
+// Online C++ compiler to run C++ program online
+#include<iostream>
+using namespace std;
+class Student{
+protected:
+int rn;
+public:
+void getno(int a){
+rn=a;}
+void putno(){
+cout<<"roll no : "<<rn<<"\n";
+}
+};
+class Marks:public Student{
+protected:
+float sub1,sub2;
+public:
+void getmarks(float a, float b)
+{sub1 =a;
+sub2=b;}
+void putmarks(){
+cout<<"\nMarks in subject 1: "<<sub1;
+cout<<"\nMarks in subject 2: "<<sub2;
+}
+};
+class Result : public Marks
+{
+protected:
+float total;
+public:
+void display(){
+total=sub1 +sub2;
+putno();
+putmarks();
+}
+};
+int main(){
+Result stu1;
+stu1.getno(21);
+stu1.getmarks(91.0,63.0);
+stu1.display();
+}
+
+3.
+#include <iostream>
+#include <string>
+using namespace std;
+// Base class to store common attributes for a person
+class Person {
+protected:
+string name;
+int age;
+public:
+Person(const string& n, int a) : name(n), age(a) {}
+void displayInfo() {
+cout << "Name: " << name << endl;
+cout << "Age: " << age << " years" << endl;
+}
+};
+// Derived class for an Employee
+class Employee : public Person {
+private:
+string employeeId;
+double salary;
+public:
+Employee(const string& n, int a, const string& empId, double sal)
+: Person(n, a), employeeId(empId), salary(sal) {}
+void displayEmployeeInfo() {
+displayInfo(); // Inherited function to display common information
+cout << "Employee ID: " << employeeId << endl;
+cout << "Salary: Rs " << salary << " per year" << endl;
+}
+};
+// Derived class for a Student
+class Student : public Person {
+private:
+string studentId;
+string major;
+public:
+Student(const string& n, int a, const string& stuId, const string& maj)
+: Person(n, a), studentId(stuId), major(maj) {}
+void displayStudentInfo() {
+displayInfo(); // Inherited function to display common information
+cout << "Student ID: " << studentId << endl;
+cout << "Major: " << major << endl;
+}
+};
+int main() {
+Employee emp("Arush", 30, "E12345", 60000.0);
+Student stu("Ajit", 20, "S67890", "Computer Science");
+cout << "Employee Information:" << endl;
+emp.displayEmployeeInfo();
+cout << "\nStudent Information:" << endl;
+stu.displayStudentInfo();
+return 0;
+}
+4.
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+protected:
+string name;
+string prn;
+public:
+Student(const string& n, const string& p) : name(n), prn(p) {}
+void displayInfo() {
+cout << "Name: " << name << endl;
+cout << "PRN: " << prn << endl;
+}
+};
+class UT_Marks : public Student {
+protected:
+double utScore;
+public:
+UT_Marks(const string& n, const string& p, double score) : Student(n, p), utScore(score) {}
+void displayUTMarks() {
+cout << "UT Score: " << utScore << endl;
+}
+};
+class Sports : public Student {
+protected:
+string sportName;
+public:
+Sports(const string& n, const string& p, const string& sport) : Student(n, p), sportName(sport)
+{}
+void displaySportsInfo() {
+cout << "Sport: " << sportName << endl;
+}
+};
+class Result : public UT_Marks, public Sports {
+public:
+Result(const string& n, const string& p, double score, const string& sport)
+: UT_Marks(n, p, score), Sports(n, p, sport) {}
+void displayResult() {
+UT_Marks::displayInfo(); // Display common student information from UT_Marks
+displayUTMarks(); // Display UT marks
+displaySportsInfo(); // Display sports information
+}
+};
+int main() {
+Result studentResult("Akash Gupta", "22070188895", 87.5, "Football");
+cout << "Student Result Information:" << endl;
+studentResult.displayResult();
+return 0;
+}
+5.
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+class Triangle{
+public:
+void triangle(){
+cout<<"I am a triangle\n";
+}
+};
+class Isosceles : public Triangle{
+public:
+void isosceles(){
+cout<<"I am an isosceles triangle\n";
+}
+};
+//Write your code here.
+class Equilateral: public Isosceles{
+public:
+void equilateral(){
+cout<<"I am an equilateral triangle\n";
+}
+};
+int main(){
+Equilateral eqr;
+eqr.equilateral();
+eqr.isosceles();
+eqr.triangle();
+return 0;
+}
+
+programs: C++ program to read and print employee information using multiple
+inheritance.
+Code:-
+#include <iostream>
+#include <string>
+using namespace std;
+// Base class to store common attributes for a person
+class Person {
+protected:
+string name;
+public:
+Person(const string& n) : name(n) {}
+void displayPersonInfo() {
+cout << "Name: " << name << endl;
+}
+};
+// Base class to store employee-specific attributes
+class EmployeeInfo {
+protected:
+int employeeId;
+string department;
+public:
+EmployeeInfo(int id, const string& dept) : employeeId(id), department(dept) {}
+void displayEmployeeInfo() {
+cout << "Employee ID: " << employeeId << endl;
+cout << "Department: " << department << endl;
+}
+};
+// Derived class to represent an Employee by inheriting from Person and EmployeeInfo
+class Employee : public Person, public EmployeeInfo {
+public:
+Employee(const string& n, int id, const string& dept)
+: Person(n), EmployeeInfo(id, dept) {}
+void displayEmployeeDetails() {
+displayPersonInfo(); // Display name
+displayEmployeeInfo(); // Display employee-specific info
+}
+};
+int main() {
+string name, department;
+int employeeId;
+cout << "Enter Employee Information:" << endl;
+cout << "Name: ";
+cin >> name;
+cout << "Employee ID: ";
+cin >> employeeId;
+cout << "Department: ";
+cin >> department;
+Employee emp(name, employeeId, department);
+cout << "\nEmployee Details:" << endl;
+emp.displayEmployeeDetails();
+return 0;
+}
+
+
+//OPERATOR OVERLOADING
+
+#include<iostream>
+using namespace std;
+class operators{
+public:
+    int a,b,c;
+    void getdata(){   //to get data for unary operators
+        cout<<"Enter number: ";
+        cin>>a;
+    }
+    void input1(){  //for binary operator
+        cout<<"enter first number: ";
+        cin>>b;
+    }
+    void input2(){
+        cout<<"enter second number: ";
+        cin>>c;
+    }
+    void operator ++(int){ //prefix operator
+        ++a;
+    }
+    void operator ++(){   //postfix operator
+        a++;
+    }
+    //operator overloading with friend function
+    friend operators operator +(operators &x, operators &y){ 
+        operators temp;
+        temp.b=x.b+y.c;
+        return temp;
+    }
+    void display(){   //displaying unary results
+        cout<<"a = "<<a<<endl;
+    }
+    void print(){  // displaying binary + result
+        cout<<"sum of two numbers: "<<b;
+    }
+    bool operator <(operators m){  //operator overloading for comaprison operator
+        if(a<m.a){
+            return true;
+        }
+        return false;
+    }
+};
+int main(){
+    operators o1,o2,o3,o4,o5;
+    o3=o1+o2;
+    int choice;
+    while(1){
+        cout << "\n1. prefix operator\n2. Postfix operator\n3. sum\n4. less than operator\n5. exit" << endl;
+        cout << "choose an option: ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            o1.getdata();
+            cout << "before increment: ";
+            o1.display();
+            ++o1;
+            cout << "after increment: ";
+            o1.display();
+            break;
+        case 2:
+            o2.getdata();
+            cout << "before increment: ";
+            o2.display();
+            o2++;
+            cout << "after increment: ";
+            o2.display();
+            break;
+        case 3:
+            o1.input1();
+            o2.input2();
+            o3 = o1 + o2;  // will be same as o1 + operator(o2)
+            o3.print();
+            break;
+        case 4:
+            o4.getdata();
+            o5.getdata();
+            if (o4 < o5)
+            {
+                cout << "first number is lesser than second number";
+            }
+            else if (o5 < o4)
+            {
+                cout << "second number is lesser than first number";
+            }
+            break;
+        case 5:
+            cout << "exiting...";
+            return 0;
+            break;
+        default:
+            cout << "invalid input!";
+            break;
+        }
+    }
+    return 0;
+}
+//UNARY NOT LOGIC
+#include &lt;iostream&gt;
+using namespace std;
+
+class Unary {
+private:
+bool value;
+
+public:
+Unary(bool v){
+value = v;
+}
+
+bool operator!() {
+return !value;
+}
+};
+
+int main() {
+bool a;
+cout<<”Enter a Boolean value(0 for false and 1 for true): “;
+cin>>a;
+Unary una(a);
+cout<<!una<<endl;
+return 0;
+}
+
+//Practice programs: Write a program that would print the information (name, year of joining,
+salary, address) of three employees by creating a class named &#39;Employee&#39;. The output should be
+as follows:
+Name Year of joining Address
+Rahul 2010 64C- WallsStreat
+Samar 2000 68D- WallsStreat
+Ishita 2018 26B- WallsStreat
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+class Employee {
+public:
+string name;
+int yearOfJoining;
+string address;
+
+Employee(string n, int y, string addr) {
+name = n;
+yearOfJoining = y;
+address = addr;
+}
+
+void displayInfo() {
+cout<<name<<"\t\t"<<yearOfJoining<<"\t\t"<<address<<endl;
+}
+};
+
+int main(){
+Employee employee1("Rahul", 2010, "64C- WallsStreet");
+Employee employee2("Samar", 2010, "64C- WallsStreet");
+Employee employee3("ayush", 2010, "64C- WallsStreet");
+
+cout<<"Name\t\tYear of joining\t\tAddress"<< endl;
+employee1.displayInfo();
+employee2.displayInfo();
+employee3.displayInfo();
+return 0;
+}
+
+//ASSIGNMENT 1
+include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <string.h>
+
+void binary_to_decimal(int n)
+{
+    int rem, i = 0, ans = 0;
+    while (n != 0)
+    {
+        rem = n % 10;
+        n /= 10;
+        ans += rem * pow(2, i);
+        i++;
+    }
+    printf("\n Binary to decimal: %d", ans);
+}
+void decimal_to_binary(int n)
+{
+    int ans[100], i = 0, j = 0;
+    while (n > 0)
+    {
+        ans[i] = n % 2;
+        n /= 2;
+        i++;
+    }
+    printf("\ndecimal to binary: ");
+    for (j = i - 1; j >= 0; j--)
+    {
+        printf("%d", ans[j]);
+    }
+}
+void octal_to_decimal(int n)
+{
+    int rem, i = 0, ans = 0;
+    while (n != 0)
+    {
+        rem = n % 10;
+        n /= 10;
+        ans += rem * pow(8, i);
+        i++;
+    }
+    printf("\n Binary to decimal: %d", ans);
+}
+void decimal_to_octal(int n)
+{
+    int ans[100], i = 0, j = 0;
+    while (n > 0)
+    {
+        ans[i] = n % 8;
+        n /= 8;
+        i++;
+    }
+    printf("\ndecimal to octal: ");
+    for (j = i - 1; j >= 0; j--)
+    {
+        printf("%d", ans[j]);
+    }
+}
+void hexa_to_decimal(char n[])
+{
+    char value[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    int i, j, power = 0, ans = 0;
+    for (i = strlen(n) - 1; i >= 0; i--)
+    {
+        for (j = 0; j < 16; j++)
+        {
+            if (n[i] == value[j])
+            {
+                ans += j * pow(16, power);
+            }
+        }
+        power++;
+    }
+    printf("Decimal Number : %d", ans);
+}
+void decimal_to_hexa(int n)
+{
+}
+int main()
+{
+    int a, b, c, d, f, choice;
+    char e[100];
+    printf("1. binary to decimal \n 2. decimal to binary \n 3. octal to decimal \n 4. decimal to octal \n 5. hexa to decimal \n 6. decimal to hexa \n Enter your choice:");
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+        // binary to decimal
+        printf("Enter a number:");
+        scanf("%d", &a);
+        binary_to_decimal(a);
+        break;
+    case 2:
+        // decimal to binary
+        printf("Enter a number:");
+        scanf("%d", &b);
+        decimal_to_binary(b);
+        break;
+    case 3:
+        // octal to decimal
+        printf("Enter a number:");
+        scanf("%d", &c);
+        octal_to_decimal(c);
+        break;
+    case 4:
+        // decimal to octal
+        printf("Enter a number:");
+        scanf("%d", &d);
+        decimal_to_octal(d);
+        break;
+    case 5:
+        // hexa to decimal
+        printf("Enter a hexadecimal:");
+        scanf("%s", &e);
+        hexa_to_decimal(e);
+        break;
+    case 6:
+        // decimal to hexa
+        printf("Enter a number:");
+        scanf("%d", &f);
+        decimal_to_hexa(f);
+        break;
+    default:
+        printf("Invalid Choice.");
+    }
+    return 0;
+}
